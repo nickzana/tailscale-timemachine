@@ -1,0 +1,38 @@
+version: "3"
+services:
+  user1-tm-proxy:
+    build: .
+    container_name: user1-tm-proxy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    environment:
+      - TS_AUTHKEY=$TS_AUTHKEY
+      - TS_VERBOSE=1
+      - TS_LOGIN_SERVER=$TS_LOGIN_SERVER
+    networks:
+      - proxy
+    restart: unless-stopped
+
+    #  macbookair-tm:
+    #image: mbentley/timemachine:smb
+    #container_name: macbookair-tm
+    #hostname: macbookair-tm
+    #volumes:
+    #  - $TM_PATH/macbookair-tm:/opt/timemachine
+    #  - timemachine-var-lib-samba:/var/lib/samba
+    #  - timemachine-var-cache-samba:/var/cache/samba
+    #  - timemachine-run-samba:/run/samba
+    #environment:
+    #  - DEBUG_LEVEL=2
+    #networks:
+    #  - proxy
+    #restart: unless-stopped
+
+volumes:
+  timemachine-var-lib-samba:
+  timemachine-var-cache-samba:
+  timemachine-run-samba:
+
+networks:
+  proxy:
+    driver: bridge

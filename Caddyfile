@@ -1,0 +1,8 @@
+{
+	debug
+	order tailscale_auth after basicauth
+}
+
+:80 {
+	bind tailscale/
+}
