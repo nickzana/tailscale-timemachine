@@ -4,5 +4,6 @@
 }
 
 :80 {
-	bind tailscale/
+	bind tailscale/tm-1
+	reverse_proxy localhost:8081
 }
