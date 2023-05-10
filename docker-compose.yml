@@ -13,11 +13,20 @@ services:
     restart: unless-stopped
 
   httpd:
+    container_name: httpd
     image: httpd
-    ports:
-      - 127.0.0.1:8081:80
+    networks:
+      expose:
+        ipv4_address: 172.24.0.11
 
 volumes:
   timemachine-var-lib-samba:
   timemachine-var-cache-samba:
   timemachine-run-samba:
+
+networks:
+  expose:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.24.0.0/24

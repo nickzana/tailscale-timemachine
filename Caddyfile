@@ -1,9 +1,4 @@
-{
-	debug
-	order tailscale_auth after basicauth
-}
-
 :80 {
-	bind tailscale/tm-1
-	reverse_proxy localhost:8081
+	bind tailscale/httpd-1
+	reverse_proxy 172.24.0.11:80
 }
