@@ -2,7 +2,7 @@ version: "3"
 services:
   tm-proxy:
     build: .
-    container_name: user1-tm-proxy
+    container_name: tm-proxy
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     environment:
