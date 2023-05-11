@@ -3,8 +3,9 @@ services:
   tm-proxy:
     build: .
     container_name: tm-proxy
+    command: caddy run --config /etc/caddy/config.json
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./config.json:/etc/caddy/config.json:ro
     environment:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_VERBOSE=1

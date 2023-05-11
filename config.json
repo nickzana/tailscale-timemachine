@@ -1,0 +1,23 @@
+{
+	"apps": {
+		"layer4": {
+			"servers": {
+				"httpd-1": {
+					"listen": ["tailscale/http-1:80"],
+					"routes": [
+						{
+							"handle": [
+								{
+									"handler": "proxy",
+									"upstreams": [
+										{"dial": ["172.24.0.11:80"]}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	}
+}
