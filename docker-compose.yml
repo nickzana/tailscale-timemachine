@@ -18,11 +18,13 @@ services:
     container_name: tm-1
     volumes:
       - $TM_PATH/tm-1:/opt/timemachine
+      - ./smb.conf:/etc/samba/smb.conf
       - timemachine-var-lib-samba:/var/lib/samba
       - timemachine-var-cache-samba:/var/cache/samba
       - timemachine-run-samba:/run/samba
     environment:
       - DEBUG_LEVEL=2
+      - CUSTOM_SMB_CONF=true
     networks:
       expose:
         ipv4_address: 172.24.0.11
