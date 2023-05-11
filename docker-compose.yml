@@ -1,26 +1,14 @@
 version: "3"
 services:
-  tm-proxy-1:
+  tm-proxy:
     build: .
-    container_name: tm-proxy-1
+    container_name: tm-proxy
     command: caddy run --config /etc/caddy/config.json
     volumes:
       - ./config.json:/etc/caddy/config.json:ro
     environment:
-      - TS_AUTHKEY=$TS_AUTHKEY
-      - TS_VERBOSE=1
-      - TS_LOGIN_SERVER=$TS_LOGIN_SERVER
-    network_mode: host
-    restart: unless-stopped
-
-  tm-proxy-2:
-    build: .
-    container_name: tm-proxy-2
-    command: caddy run --config /etc/caddy/config.json
-    volumes:
-      - ./config2.json:/etc/caddy/config.json:ro
-    environment:
-      - TS_AUTHKEY=$TS_AUTHKEY
+      - TS_AUTHKEY_TM_1=$TS_AUTHKEY_TM_1
+      - TS_AUTHKEY_TM_2=$TS_AUTHKEY_TM_2
       - TS_VERBOSE=1
       - TS_LOGIN_SERVER=$TS_LOGIN_SERVER
     network_mode: host

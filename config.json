@@ -16,6 +16,21 @@
 							]
 						}
 					]
+				},
+				"tm-2": {
+					"listen": ["tailscale/tm-2:445"],
+					"routes": [
+						{
+							"handle": [
+								{
+									"handler": "proxy",
+									"upstreams": [
+										{"dial": ["172.24.0.12:445"]}
+									]
+								}
+							]
+						}
+					]
 				}
 			}
 		}
