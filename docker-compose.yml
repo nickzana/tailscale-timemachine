@@ -13,12 +13,20 @@ services:
     network_mode: host
     restart: unless-stopped
 
-  httpd:
-    container_name: httpd
-    image: httpd
+  tm-1:
+    image: mbentley/timemachine:smb
+    container_name: tm-1
+    volumes:
+      - $TM_PATH/tm-1:/opt/timemachine
+      - timemachine-var-lib-samba:/var/lib/samba
+      - timemachine-var-cache-samba:/var/cache/samba
+      - timemachine-run-samba:/run/samba
+    environment:
+      - DEBUG_LEVEL=2
     networks:
       expose:
         ipv4_address: 172.24.0.11
+    restart: unless-stopped
 
 volumes:
   timemachine-var-lib-samba:

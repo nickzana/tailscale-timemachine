@@ -2,15 +2,15 @@
 	"apps": {
 		"layer4": {
 			"servers": {
-				"httpd-1": {
-					"listen": ["tailscale/http-1:80"],
+				"tm-1": {
+					"listen": ["tailscale/tm-1:445"],
 					"routes": [
 						{
 							"handle": [
 								{
 									"handler": "proxy",
 									"upstreams": [
-										{"dial": ["172.24.0.11:80"]}
+										{"dial": ["172.24.0.11:445"]}
 									]
 								}
 							]
